@@ -1,0 +1,13 @@
+name,disease,type,side_effects
+Metformin,Diabetes,Oral,"Nausea, Diarrhea"
+Insulin,Diabetes,Injection,Hypoglycemia
+Lisinopril,Hypertension,Oral,"Dry cough, Dizziness"
+Amlodipine,Hypertension,Oral,"Swelling, Headache"
+Aspirin,Heart Disease,Oral,Stomach upset
+Atorvastatin,Heart Disease,Oral,Muscle pain
+Albuterol,Asthma,Inhaler,"Tremors, Rapid heartbeat"
+Fluticasone,Asthma,Inhaler,"Thrush, Hoarseness"
+Ibuprofen,Arthritis,Oral,Stomach irritation
+Acetaminophen,Arthritis,Oral,Liver damage (high doses)
+Sertraline,Depression,Oral,"Nausea, Insomnia"
+Fluoxetine,Depression,Oral,"Headache, Fatigue"
