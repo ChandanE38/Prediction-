@@ -65,6 +65,8 @@ def load_models():
         st.error(f"Error loading models: {str(e)}")
         return None
 
+
+
 def simple_predict(patient_data):
     """Simple prediction function using existing model"""
     try:
@@ -72,7 +74,7 @@ def simple_predict(patient_data):
         if os.path.exists('test_model.pkl'):
             model_data = joblib.load('test_model.pkl')
             model = model_data['model']
-            scaler = model_data['scaler']
+            scaler = model_data.get('scaler', None)  # ✅ Safely get scaler if exists
             label_encoder = model_data['label_encoder']
             feature_columns = model_data['feature_columns']
             
@@ -85,11 +87,14 @@ def simple_predict(patient_data):
                     else:
                         features.append(patient_data[col])
                 else:
-                    features.append(0)
+                    features.append(0)  # Default 0 if missing
             
             X = np.array(features).reshape(1, -1)
-            X_scaled = scaler.transform(X)
-            
+
+            # ✅ Apply scaling if scaler exists
+            X_scaled = scaler.transform(X) if scaler is not None else X
+
+            # Prediction
             prediction = model.predict(X_scaled)[0]
             confidence = max(model.predict_proba(X_scaled)[0])
             
@@ -102,6 +107,8 @@ def simple_predict(patient_data):
             
     except Exception as e:
         return {"error": f"Prediction error: {e}"}
+
+
 
 def main():
     # Header
